@@ -1,5 +1,5 @@
 version: '3.9'
-#  python manage.py sync_data_to_db &&
+#  
 services:
   backend:
     build: 
@@ -8,7 +8,7 @@ services:
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
-            
+             python manage.py sync_data_to_db &&
              python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
@@ -16,6 +16,7 @@ services:
       - ./backend:/backend
     environment:
       - SECRET_KEY=devsecret
+      - ALLOWED_HOST=http://localhost:5050
       - DEBUG=1
       - DB_HOST=db
       - DB_NAME=devdb
@@ -29,11 +30,16 @@ services:
       context: ./frontend
     container_name: frontend
     ports:
-      - 3000:3000
+      - 5050:3000
     volumes:
       - ./frontend:/frontend
     stdin_open: true
     tty: true
+    environment:
+      -  REACT_APP_BASE_URL=http://localhost:8000
+    depends_on:
+      - backend
+      - db
 
   db:
     image: postgres:13-alpine

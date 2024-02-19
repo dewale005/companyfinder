@@ -70,7 +70,7 @@ class Company(BaseAbstractModel):
     website = models.URLField(blank=True, null=True)
     tagline = models.CharField(max_length=255, blank=True, null=True)
     about = models.CharField(max_length=6000, blank=True, null=True)
-    year_founded = models.DateField(blank=True, null=True)
+    year_founded = models.CharField(max_length=255, blank=True, null=True)
     locality = models.ManyToManyField(Locality, related_name="company_locality", limit_choices_to={'is_archived': False})
     country = models.CharField(max_length=255, blank=True, null=True)
     current_employee_estimate = models.CharField(max_length=255, blank=True, null=True)

@@ -2,3 +2,4 @@ Django==4.2.10
 psycopg2>=2.8.6,<2.9
 django-filter==23.5
 djangorestframework==3.14.0
+django-cors-headers
