@@ -21,19 +21,19 @@ This repository contains the source code for a full-stack web application built 
 1. Clone the repository: 
 
     ```bash
-      git clone https://link-to-project
+      git clone https://github.com/dewale005/companyfinder.git
    ```
 
-1. Navigate to the project directory: cd <project-directory>
+1. Navigate to the project directory:
 
     ```bash
-      cd <project-directory>
+      cd companyfinder
     ```
 
 1. Install dependencies:
 
     ```bash
-      npm install && pip install -r requirements.txt
+     cd frontend && npm install && cd .. && docker-compose build
     ```
 
 1. Start the development server: 
@@ -45,7 +45,7 @@ This repository contains the source code for a full-stack web application built 
 1. Access the application via the provided URL.
 
      ```bash
-      http://localhost:3032
+      http://localhost:5050
     ```
 
 #### Contributing:

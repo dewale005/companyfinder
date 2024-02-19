@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 LABEL key="olagunjuadewale.dev"
 
 WORKDIR /frontend
@@ -6,7 +6,9 @@ WORKDIR /frontend
 COPY ./package.json /frontend/package.json
 COPY . /frontend
 
-RUN yarn install
+RUN npm install
+RUN npm install react-scripts -g --silent
+RUN npm install -g typescript
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
